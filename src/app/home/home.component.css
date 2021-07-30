@@ -1,0 +1,12 @@
+.text-center {
+    display: flex;
+    justify-content: center;
+}
+button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin: 0 auto;
+    transform: translate(0, -50%);
+}

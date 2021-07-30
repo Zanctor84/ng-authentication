@@ -1,0 +1,26 @@
+<div class="container" *ngIf="!isSignedIn">
+	<section id="content">
+		<form action="">
+			<h1>Login</h1>
+			<div>
+				<input type="text" placeholder="Username" required="" id="username" #email />
+			</div>
+			<div>
+				<input type="password" placeholder="Password" required="" id="password" #password />
+			</div>
+			<div>
+
+        <button 
+		type="submit" (click)="onSignin(email.value, password.value)"
+		 >Sign in
+				
+        </button>
+				<a [routerLink]="['/signup']" >Register</a>
+			</div>
+		</form>
+		
+	</section>
+</div>
+<app-home *ngIf="isSignedIn" (isLogout)="userLogout()"
+[routerLink]="['/home']"
+></app-home>

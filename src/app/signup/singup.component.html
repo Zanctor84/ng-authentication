@@ -1,0 +1,61 @@
+<div class="container" *ngIf="!isSignedIn">
+	<section id="content">
+		<form action="" [formGroup]="form" (ngSubmit)="submit()">
+			<h1>Register</h1>
+			<div 
+			class="form-control" 
+			[ngClass]="{invalid: form.get('username').touched && form.get('username').invalid}"
+			>
+				<input 
+				type="text" 
+				placeholder="Username" 
+				required="" id="username" 
+				#emailSignup
+				formControlName="username"
+				 />
+				<div
+				 class="validation"
+				 *ngIf="form.get('username').touched && form.get('username').invalid"
+				 >
+					<small *ngIf="form.get('username').errors.required">
+						Введите логин
+					</small>
+				</div>
+			</div>
+			<div
+			class="form-control"
+			[ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+			>
+				<input 
+				type="password" 
+				placeholder="Password" 
+				required="" id="password" 
+				#passwordSignup
+				formControlName="password"
+				 />
+				<div 
+				class="validation"
+				*ngIf="form.get('password').touched && form.get('password').invalid"
+				>
+					<small>Введите пароль</small>
+				</div>
+			</div>
+			<div>
+
+        <button 
+		type="submit"
+		class="btn btn-primary"
+		[disabled]="form.invalid"
+		 (click)="onSignup(emailSignup.value, passwordSignup.value)" 
+		 >Register
+				
+        </button>
+				<a [routerLink]="['/signin']">Login</a>
+			</div>
+		</form>
+		
+	</section>
+</div>
+<app-home *ngIf="isSignedIn" (isLogout)="userLogout()"
+	[routerLink]="['/signin']"
+></app-home>
