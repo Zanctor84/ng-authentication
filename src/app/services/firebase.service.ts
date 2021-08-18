@@ -12,7 +12,7 @@ export class FirebaseService {
 
   async signin (
     email: string, 
-    password: string
+    password: string,
     ){
       await this.firebaseAuth.signInWithEmailAndPassword(email, password)
       .then (res => {
@@ -23,7 +23,7 @@ export class FirebaseService {
   }
   async signup (
     email: string, 
-    password: string
+    password: string,
     ){
       await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
       .then (res => {

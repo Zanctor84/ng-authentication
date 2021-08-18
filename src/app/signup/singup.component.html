@@ -46,7 +46,7 @@
 		type="submit"
 		class="btn btn-primary"
 		[disabled]="form.invalid"
-		 (click)="onSignup(emailSignup.value, passwordSignup.value)" 
+		(click)="onSignup(emailSignup.value, passwordSignup.value)" 
 		 >Register
 				
         </button>
@@ -56,6 +56,7 @@
 		
 	</section>
 </div>
+
 <app-home *ngIf="isSignedIn" (isLogout)="userLogout()"
 	[routerLink]="['/signin']"
 ></app-home>
