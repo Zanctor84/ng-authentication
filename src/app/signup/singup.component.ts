@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
 
-
+declare var dataLayer: any[];
+declare var gtag: any;
 
 @Component({
   selector: 'app-singup',
@@ -28,6 +29,15 @@ export class SingupComponent implements OnInit {
     await this.firebaseService.signup(email, password)
     if(this.firebaseService.isLoggedIn)
     this.isSignedIn = true;
+    dataLayer.push({
+      event: "CE registration",
+      event_properties: {},
+      user_properties: {
+        id: "USER1234"
+      }
+    });
+    gtag('set', 'Registration')
+    gtag('send', 'registr')
   }
 
   submit() {
